@@ -80,8 +80,17 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
     >
       Next player: X
     </div>
+    <div
+      className="sc-eCssSg fLyzsC"
+    >
+      <button
+        type="button"
+      >
+        Toggle Asc/Desc
+      </button>
+    </div>
     <ol
-      className="sc-eCssSg UPgMP"
+      className="sc-jSgupP bEhndS"
     >
       <li>
         <button

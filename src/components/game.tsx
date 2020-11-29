@@ -2,6 +2,7 @@ import React, { useState, MouseEvent, FC } from 'react';
 import Board, { board, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
 import History, { History as HistoryType } from 'components/history';
+import HistoryOrder from 'components/historyOrder';
 import styled from 'styled-components';
 import 'index.css';
 
@@ -98,6 +99,7 @@ const Game: FC = () => {
       <Board squares={current.squares} onClick={handleClick} />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
+        <HistoryOrder />
         <History history={history} current={stepNumber} onClick={jumpTo} />
       </GameInfo>
     </View>
