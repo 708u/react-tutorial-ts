@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`history component test should be same as a previous snapshot. 1`] = `
+<ol
+  className="sc-bdfBwQ dDRKCN"
+>
+  <li>
+    <button
+      className="btn-bold"
+      onClick={[Function]}
+      type="button"
+    >
+      Go to game start
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #1. [row: 1, col: 1]
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #2. [row: 1, col: 2]
+    </button>
+  </li>
+</ol>
+`;
+
+exports[`history component test should be same as a previous snapshot. 2`] = `
+<ol
+  className="sc-gsTCUz LxBZ"
+>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to game start
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #1. [row: 1, col: 1]
+    </button>
+  </li>
+  <li>
+    <button
+      className="btn-bold"
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #2. [row: 1, col: 2]
+    </button>
+  </li>
+</ol>
+`;
