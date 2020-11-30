@@ -24,6 +24,7 @@ const Game: FC = () => {
     },
   ]);
   const [stepNumber, setStepNumber] = useState(0);
+  const [isAscending, toggleAscending] = useState(true);
   const [xIsNext, setXIsNext] = useState(true);
   const current = history[stepNumber];
 
@@ -99,8 +100,8 @@ const Game: FC = () => {
       <Board squares={current.squares} onClick={handleClick} />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
-        <HistoryOrder />
-        <History history={history} current={stepNumber} onClick={jumpTo} />
+        <HistoryOrder isAscending={isAscending} onClick={() => toggleAscending(!isAscending)} />
+        <History history={history} current={stepNumber} isAscending={isAscending} onClick={jumpTo} />
       </GameInfo>
     </View>
   );

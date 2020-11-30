@@ -84,9 +84,11 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       className="sc-eCssSg fLyzsC"
     >
       <button
+        onClick={[Function]}
         type="button"
       >
-        Toggle Asc/Desc
+        Change to:
+         Desc
       </button>
     </div>
     <ol

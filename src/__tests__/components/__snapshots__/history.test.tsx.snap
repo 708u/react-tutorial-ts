@@ -67,3 +67,37 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
   </li>
 </ol>
 `;
+
+exports[`history component test should be same as a previous snapshot. 3`] = `
+<ol
+  className="sc-dlfnbm ecugPi"
+>
+  <li>
+    <button
+      className="btn-bold"
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #2. [row: 1, col: 2]
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to move #1. [row: 1, col: 1]
+    </button>
+  </li>
+  <li>
+    <button
+      className=""
+      onClick={[Function]}
+      type="button"
+    >
+      Go to game start
+    </button>
+  </li>
+</ol>
+`;
