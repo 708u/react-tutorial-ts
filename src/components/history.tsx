@@ -27,7 +27,9 @@ const History: FC<Props> = (props) => {
 
   const { history, current, onClick, isAscending = true } = props;
 
-  const mapWithOrder = (func: (sq: Squares, move: number) => JSX.Element) => {
+  type MapTo<T, U> = (func: (arr: T, i: number) => U) => U[];
+
+  const mapWithOrder: MapTo<Squares, JSX.Element> = (func) => {
     return isAscending ? history.map(func) : history.map(func).reverse();
   };
 
