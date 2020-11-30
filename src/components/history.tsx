@@ -1,19 +1,17 @@
 import React, { FC } from 'react';
 import { v4 as uuidV4 } from 'uuid';
-import { board } from 'components/board';
+import { Board } from 'components/board';
 import styled from 'styled-components';
 
-export type Position = {
+type Position = {
   col: number;
   row: number;
 };
-
-export type squares = {
-  squares: board;
+type Squares = {
+  squares: Board;
   position?: Position;
 };
-
-export type History = squares[];
+type History = Squares[];
 
 type Props = {
   history: History;
@@ -29,7 +27,7 @@ const History: FC<Props> = (props) => {
 
   const { history, current, onClick, isAscending = true } = props;
 
-  const mapWithOrder = (func: (sq: squares, move: number) => JSX.Element) => {
+  const mapWithOrder = (func: (sq: Squares, move: number) => JSX.Element) => {
     return isAscending ? history.map(func) : history.map(func).reverse();
   };
 
@@ -45,5 +43,7 @@ const History: FC<Props> = (props) => {
     </HistoryList>
   );
 };
+
+export type { Position, History, Squares };
 
 export default History;

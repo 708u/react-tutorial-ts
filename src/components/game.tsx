@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent, FC } from 'react';
-import Board, { board, LocationMap, LocationIndex } from 'components/board';
+import Board, { Board as BoardType, LocationMap, LocationIndex } from 'components/board';
 import { mark } from 'components/square';
 import History, { History as HistoryType } from 'components/history';
 import HistoryOrder from 'components/historyOrder';
@@ -40,7 +40,7 @@ const Game: FC = () => {
   ] as const;
 
   // FIXME: refactoring arg name;
-  const calculateWinner = (bd: board): mark => {
+  const calculateWinner = (bd: BoardType): mark => {
     let winner: mark = null;
     gameIsOverPatterns.forEach((v, idx) => {
       const [a, b, c] = gameIsOverPatterns[idx];
@@ -97,7 +97,7 @@ const Game: FC = () => {
 
   return (
     <View>
-      <Board squares={current.squares} onClick={handleClick} />
+      <Board board={current.squares} onClick={handleClick} />
       <GameInfo>
         <GameInfo>{getStatus()}</GameInfo>
         <HistoryOrder isAscending={isAscending} onClick={() => toggleAscending(!isAscending)} />

@@ -4,13 +4,7 @@ import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
 
-export type board = mark[];
-
-type Props = {
-  squares: board;
-  onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
-};
-
+type Board = mark[];
 type LocationIndex = '1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '3-1' | '3-2' | '3-3';
 
 const LocationMap: Map<
@@ -31,6 +25,11 @@ const LocationMap: Map<
   ['3-3', { row: 3, col: 3 }],
 ]);
 
+type Props = {
+  board: Board;
+  onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
+};
+
 const Board: FC<Props> = (props: Props) => {
   const BoardRaw = styled.div`
     ::after {
@@ -40,7 +39,7 @@ const Board: FC<Props> = (props: Props) => {
     }
   `;
 
-  const { squares, onClick } = props;
+  const { board, onClick } = props;
 
   const boardNumbers: {
     location: LocationIndex;
@@ -99,7 +98,7 @@ const Board: FC<Props> = (props: Props) => {
               key={`square-btn-${uuidV4()}`}
               name={value.location}
               testId={value.id}
-              value={squares[value.id]}
+              value={board[value.id]}
               onClick={onClick(value.id)}
             />
           ))}
@@ -109,7 +108,7 @@ const Board: FC<Props> = (props: Props) => {
   );
 };
 
-export type { LocationIndex };
+export type { Board, LocationIndex };
 
 export { LocationMap };
 
