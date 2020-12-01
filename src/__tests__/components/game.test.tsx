@@ -69,4 +69,12 @@ describe('game component test', () => {
     expect(screen.getByTestId('btn-7')).toHaveStyleRule('background-color', normalColor);
     expect(screen.getByTestId('btn-8')).toHaveStyleRule('background-color', normalColor);
   });
+
+  it('should display a draw message if both of players did not win.', () => {
+    render(<Game />);
+    const clicks = ['btn-0', 'btn-2', 'btn-1', 'btn-3', 'btn-5', 'btn-4', 'btn-6', 'btn-7', 'btn-8'];
+
+    clicks.forEach((click) => fireEvent.click(screen.getByTestId(click)));
+    expect(screen.getByText('Draw')).toBeTruthy();
+  });
 });
