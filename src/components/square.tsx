@@ -3,8 +3,20 @@ import styled from 'styled-components';
 
 export type mark = 'O' | 'X' | null;
 
-export const SquareBtn = styled.button`
-  background: #fff;
+type Props = {
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  value: mark;
+  name: string;
+  accent: boolean;
+  testId?: number;
+};
+
+type SquareBtnProps = {
+  accent: boolean;
+};
+
+const SquareBtn = styled.button<SquareBtnProps>`
+  background-color: ${({ accent }) => (accent ? 'red' : '#fff')};
   border: 1px solid #999;
   float: left;
   font-size: 24px;
@@ -18,17 +30,11 @@ export const SquareBtn = styled.button`
   width: 34px;
 `;
 
-type Props = {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  value: mark;
-  name: string;
-  testId?: number;
-};
-
 const Square: FC<Props> = (props) => {
-  const { onClick, name, value, testId } = props;
+  const { onClick, name, value, accent = true, testId } = props;
+
   return (
-    <SquareBtn name={name} data-testid={`btn-${testId}`} onClick={onClick}>
+    <SquareBtn accent={accent} name={name} data-testid={`btn-${testId}`} onClick={onClick}>
       {value}
     </SquareBtn>
   );

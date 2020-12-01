@@ -1,16 +1,25 @@
 import React, { FC } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { Board } from 'components/board';
+import { mark } from 'components/square';
 import styled from 'styled-components';
 
 type Position = {
   col: number;
   row: number;
 };
+
+type Result = {
+  winner: mark;
+  positions?: [number, number, number];
+};
+
 type Squares = {
   squares: Board;
+  result: Result;
   position?: Position;
 };
+
 type History = Squares[];
 
 type Props = {
@@ -20,11 +29,11 @@ type Props = {
   isAscending?: boolean;
 };
 
-const History: FC<Props> = (props) => {
-  const HistoryList = styled.ol`
-    padding-left: 30px;
-  `;
+const HistoryList = styled.ol`
+  padding-left: 30px;
+`;
 
+const History: FC<Props> = (props) => {
   const { history, current, onClick, isAscending = true } = props;
 
   type MapTo<T, U> = (func: (arr: T, i: number) => U) => U[];
@@ -46,6 +55,6 @@ const History: FC<Props> = (props) => {
   );
 };
 
-export type { Position, History, Squares };
+export type { Position, Result, History, Squares };
 
 export default History;
