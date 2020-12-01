@@ -6,12 +6,13 @@ type Props = {
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
+const Body = styled.div`
+  margin-top: 10px;
+  margin-left: 30px;
+`;
+
 const HistoryOrder: FC<Props> = (props: Props) => {
   const { isAscending, onClick } = props;
-  const Body = styled.div`
-    margin-top: 10px;
-    margin-left: 30px;
-  `;
 
   return (
     <Body>

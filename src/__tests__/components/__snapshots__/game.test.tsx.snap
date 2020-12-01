@@ -2,70 +2,70 @@
 
 exports[`game component test should be same as a previous snapshot. 1`] = `
 <div
-  className="sc-gsTCUz cVJQdI"
+  className="sc-eCssSg bXQtRu"
 >
   <div>
     <div
-      className="sc-hKgILt fMCYZr"
+      className="sc-gsTCUz jQPIkm"
     >
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-0"
         name="1-1"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-1"
         name="1-2"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-2"
         name="1-3"
         onClick={[Function]}
       />
     </div>
     <div
-      className="sc-hKgILt fMCYZr"
+      className="sc-gsTCUz jQPIkm"
     >
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-3"
         name="2-1"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-4"
         name="2-2"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-5"
         name="2-3"
         onClick={[Function]}
       />
     </div>
     <div
-      className="sc-hKgILt fMCYZr"
+      className="sc-gsTCUz jQPIkm"
     >
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-6"
         name="3-1"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-7"
         name="3-2"
         onClick={[Function]}
       />
       <button
-        className="sc-bdfBwQ iZlURE"
+        className="sc-bdfBwQ wpsjv"
         data-testid="btn-8"
         name="3-3"
         onClick={[Function]}
@@ -73,15 +73,15 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
     </div>
   </div>
   <div
-    className="sc-dlfnbm laRLSY"
+    className="sc-jSgupP gGUMfY"
   >
     <div
-      className="sc-dlfnbm laRLSY"
+      className="sc-jSgupP gGUMfY"
     >
       Next player: X
     </div>
     <div
-      className="sc-eCssSg fLyzsC"
+      className="sc-hKgILt dkYpWJ"
     >
       <button
         onClick={[Function]}
@@ -92,7 +92,7 @@ exports[`game component test should be same as a previous snapshot. 1`] = `
       </button>
     </div>
     <ol
-      className="sc-jSgupP bEhndS"
+      className="sc-dlfnbm biZTVG"
     >
       <li>
         <button

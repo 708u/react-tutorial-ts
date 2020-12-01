@@ -3,8 +3,10 @@ import { v4 as uuidV4 } from 'uuid';
 import Square, { mark } from 'components/square';
 import styled from 'styled-components';
 import 'index.css';
+import { Result } from 'components/history';
 
 type Board = mark[];
+
 type LocationIndex = '1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '3-1' | '3-2' | '3-3';
 
 const LocationMap: Map<
@@ -27,19 +29,20 @@ const LocationMap: Map<
 
 type Props = {
   board: Board;
+  result: Result;
   onClick: (n: number) => (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Board: FC<Props> = (props: Props) => {
-  const BoardRaw = styled.div`
-    ::after {
-      clear: both;
-      content: '';
-      display: table;
-    }
-  `;
+const BoardRaw = styled.div`
+  ::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+`;
 
-  const { board, onClick } = props;
+const Board: FC<Props> = (props: Props) => {
+  const { board, result, onClick } = props;
 
   const boardNumbers: {
     location: LocationIndex;
@@ -99,6 +102,7 @@ const Board: FC<Props> = (props: Props) => {
               name={value.location}
               testId={value.id}
               value={board[value.id]}
+              accent={result.positions?.includes(value.id) ?? false}
               onClick={onClick(value.id)}
             />
           ))}

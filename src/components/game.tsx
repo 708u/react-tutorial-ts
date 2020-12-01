@@ -6,29 +6,29 @@ import HistoryOrder from 'components/historyOrder';
 import styled from 'styled-components';
 import 'index.css';
 
+const View = styled.div`
+  flex-direction: row;
+  display: flex;
+  font: 14px 'Century Gothic', Futura, sans-serif;
+  margin: 20px;
+`;
+
+const GameInfo = styled.div`
+  margin-left: 20px;
+`;
+
 const Game: FC = () => {
-  const View = styled.div`
-    flex-direction: row;
-    display: flex;
-    font: 14px 'Century Gothic', Futura, sans-serif;
-    margin: 20px;
-  `;
-
-  const GameInfo = styled.div`
-    margin-left: 20px;
-  `;
-
   const [history, setHistory] = useState<HistoryType>([
     {
       squares: Array(9).fill(null),
+      result: { winner: null },
     },
   ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [isAscending, toggleAscending] = useState(true);
   const [xIsNext, setXIsNext] = useState(true);
-  const current = history[stepNumber];
 
-  const gameIsOverPatterns = [
+  const gameIsOverPatterns: [number, number, number][] = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -37,19 +37,26 @@ const Game: FC = () => {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
-  ] as const;
+  ];
+
+  type Result = {
+    winner: mark;
+    positions?: [number, number, number];
+  };
 
   // FIXME: refactoring arg name;
-  const calculateWinner = (bd: BoardType): mark => {
-    let winner: mark = null;
-    gameIsOverPatterns.forEach((v, idx) => {
+  const calcBoardStatus = (bd: BoardType): Result => {
+    const gameIsOverPosition = gameIsOverPatterns.find((v, idx) => {
       const [a, b, c] = gameIsOverPatterns[idx];
-      // X, null, X
-      if (bd[a] && bd[a] === bd[b] && bd[a] === bd[c]) {
-        winner = bd[a]; // 勝利したマークを返却する
-      }
+      return bd[a] && bd[a] === bd[b] && bd[a] === bd[c];
     });
-    return winner;
+
+    return gameIsOverPosition
+      ? {
+          winner: bd[gameIsOverPosition[0]],
+          positions: gameIsOverPosition,
+        }
+      : { winner: null };
   };
 
   const handleClick = (i: number) => (e: MouseEvent<HTMLButtonElement>) => {
@@ -63,21 +70,24 @@ const Game: FC = () => {
     // ['', 'X', ...];
     const copiedSquares = newSquare.squares.slice();
 
-    // クリックした点で勝利した人がいたらゲームを早期終了
-    if (calculateWinner(copiedSquares) || copiedSquares[i]) {
+    // クリックする前の盤面の時点で勝利した人がいれば処理しない
+    if (calcBoardStatus(copiedSquares).winner || copiedSquares[i]) {
       return;
     }
-    // 盤面にマークをセット
+
+    // 盤面に次のマークをセット
     copiedSquares[i] = xIsNext ? 'X' : 'O';
 
+    // 次の盤面のstatusを取得
+    const result = calcBoardStatus(copiedSquares);
     const position = e.currentTarget.name as LocationIndex;
 
-    // state更新
     setHistory(
       newHistory.concat([
         {
           squares: copiedSquares,
           position: LocationMap.get(position),
+          result,
         },
       ])
     );
@@ -90,16 +100,18 @@ const Game: FC = () => {
     setXIsNext(step % 2 === 0);
   };
 
-  const getStatus = () => {
-    const winner = calculateWinner(current.squares);
-    return winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+  const currentBoard = history[stepNumber];
+
+  const getBoardStatus = () => {
+    const r = calcBoardStatus(currentBoard.squares);
+    return r.winner ? `Winner: ${r.winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
   };
 
   return (
     <View>
-      <Board board={current.squares} onClick={handleClick} />
+      <Board result={currentBoard.result} board={currentBoard.squares} onClick={handleClick} />
       <GameInfo>
-        <GameInfo>{getStatus()}</GameInfo>
+        <GameInfo>{getBoardStatus()}</GameInfo>
         <HistoryOrder isAscending={isAscending} onClick={() => toggleAscending(!isAscending)} />
         <History history={history} current={stepNumber} isAscending={isAscending} onClick={jumpTo} />
       </GameInfo>
