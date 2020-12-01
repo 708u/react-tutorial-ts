@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`history component test should be same as a previous snapshot. 1`] = `
+.c0 {
+  padding-left: 30px;
+}
+
 <ol
-  className="sc-bdfBwQ HyWRB"
+  className="c0"
 >
   <li>
     <button
@@ -35,8 +39,12 @@ exports[`history component test should be same as a previous snapshot. 1`] = `
 `;
 
 exports[`history component test should be same as a previous snapshot. 2`] = `
+.c0 {
+  padding-left: 30px;
+}
+
 <ol
-  className="sc-bdfBwQ HyWRB"
+  className="c0"
 >
   <li>
     <button
@@ -69,8 +77,12 @@ exports[`history component test should be same as a previous snapshot. 2`] = `
 `;
 
 exports[`history component test should be same as a previous snapshot. 3`] = `
+.c0 {
+  padding-left: 30px;
+}
+
 <ol
-  className="sc-bdfBwQ HyWRB"
+  className="c0"
 >
   <li>
     <button

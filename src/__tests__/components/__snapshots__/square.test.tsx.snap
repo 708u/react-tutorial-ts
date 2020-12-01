@@ -1,8 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`square test should render as expected components 1`] = `
+.c0 {
+  background-color: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
 <button
-  className="sc-bdfBwQ wpsjv"
+  className="c0"
   data-testid="btn-undefined"
   name="btn"
   onClick={[Function]}

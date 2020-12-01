@@ -58,5 +58,15 @@ describe('game component test', () => {
 
     // Winner comment was appeared.
     expect(screen.getByText('Winner: X')).toBeTruthy();
+    // Winner's Square is highlighted.
+    const accentColor = 'skyblue';
+    expect(screen.getByTestId('btn-0')).toHaveStyleRule('background-color', accentColor);
+    expect(screen.getByTestId('btn-1')).toHaveStyleRule('background-color', accentColor);
+    expect(screen.getByTestId('btn-2')).toHaveStyleRule('background-color', accentColor);
+
+    // Loser's Square is not highlighted.
+    const normalColor = '#fff';
+    expect(screen.getByTestId('btn-7')).toHaveStyleRule('background-color', normalColor);
+    expect(screen.getByTestId('btn-8')).toHaveStyleRule('background-color', normalColor);
   });
 });

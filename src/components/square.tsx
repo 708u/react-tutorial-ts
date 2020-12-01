@@ -16,7 +16,7 @@ type SquareBtnProps = {
 };
 
 const SquareBtn = styled.button<SquareBtnProps>`
-  background-color: ${({ accent }) => (accent ? 'red' : '#fff')};
+  background-color: ${({ accent }) => (accent ? 'skyblue' : '#fff')};
   border: 1px solid #999;
   float: left;
   font-size: 24px;
