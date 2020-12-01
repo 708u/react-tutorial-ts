@@ -2,8 +2,9 @@
 
 exports[`square test should render as expected components 1`] = `
 <button
-  className="sc-bdfBwQ kDJCXl"
+  className="sc-bdfBwQ wpsjv"
   data-testid="btn-undefined"
+  name="btn"
   onClick={[Function]}
 >
   X

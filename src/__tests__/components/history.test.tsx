@@ -5,14 +5,19 @@ import History, { History as HistoryType } from 'components/history';
 describe('history component test', () => {
   it('should be same as a previous snapshot.', () => {
     const history: HistoryType = [
-      { squares: [null, null, null, null, null, null, null, null, null] },
+      {
+        squares: [null, null, null, null, null, null, null, null, null],
+        result: { winner: null },
+      },
       {
         squares: ['O', null, null, null, null, null, null, null, null],
         position: { row: 1, col: 1 },
+        result: { winner: null },
       },
       {
         squares: ['O', 'X', null, null, null, null, null, null, null],
         position: { row: 1, col: 2 },
+        result: { winner: null },
       },
     ];
     const component = renderer.create(<History isAscending history={history} current={0} onClick={() => () => true} />);

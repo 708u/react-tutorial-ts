@@ -1,7 +1,6 @@
 import React, { useState, MouseEvent, FC } from 'react';
 import Board, { Board as BoardType, LocationMap, LocationIndex } from 'components/board';
-import { mark } from 'components/square';
-import History, { History as HistoryType } from 'components/history';
+import History, { History as HistoryType, Result } from 'components/history';
 import HistoryOrder from 'components/historyOrder';
 import styled from 'styled-components';
 import 'index.css';
@@ -38,11 +37,6 @@ const Game: FC = () => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  type Result = {
-    winner: mark;
-    positions?: [number, number, number];
-  };
 
   // FIXME: refactoring arg name;
   const calcBoardStatus = (bd: BoardType): Result => {
