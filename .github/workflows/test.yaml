@@ -29,10 +29,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn
 
-    - name: lint
+    - name: Install dependencies
+      run: yarn
+
+    - name: Exec Lint
       run: yarn lint
 
-    - name: unit test
+    - name: Exec unit test
       run: yarn test

@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
 import Game from 'components/game';
 
 afterEach(cleanup);
@@ -23,7 +24,7 @@ describe('game component test', () => {
     expect(screen.queryByText(playerOMsg)).toBeNull();
 
     // progress first turn.
-    fireEvent.click(screen.getByTestId('btn-0'));
+    user.click(screen.getByTestId('btn-0'));
     // reverse next player
     screen.getByText(playerOMsg);
     expect(screen.queryByText(playerXMsg)).toBeNull();
@@ -32,7 +33,7 @@ describe('game component test', () => {
     screen.getByText(expectedFirstHistoryStr);
 
     // progress second turn.
-    fireEvent.click(screen.getByTestId('btn-1'));
+    user.click(screen.getByTestId('btn-1'));
     // reverse next player
     screen.getByText(playerXMsg);
     expect(screen.queryByText(playerOMsg)).toBeNull();
@@ -41,7 +42,7 @@ describe('game component test', () => {
     screen.getByText(expectedSecondHistoryStr);
 
     // time travel to first turn
-    fireEvent.click(screen.getByText(expectedFirstHistoryStr));
+    user.click(screen.getByText(expectedFirstHistoryStr));
     screen.getByText(playerOMsg);
     expect(screen.queryByText(playerXMsg)).toBeNull();
     // can go to current turn
@@ -54,7 +55,7 @@ describe('game component test', () => {
     render(<Game />);
     const clicks = ['btn-0', 'btn-7', 'btn-1', 'btn-8', 'btn-2'];
     // progress first turn.
-    clicks.forEach((click) => fireEvent.click(screen.getByTestId(click)));
+    clicks.forEach((click) => user.click(screen.getByTestId(click)));
 
     // Winner comment was appeared.
     expect(screen.getByText('Winner: X')).toBeTruthy();
@@ -74,7 +75,7 @@ describe('game component test', () => {
     render(<Game />);
     const clicks = ['btn-0', 'btn-2', 'btn-1', 'btn-3', 'btn-5', 'btn-4', 'btn-6', 'btn-7', 'btn-8'];
 
-    clicks.forEach((click) => fireEvent.click(screen.getByTestId(click)));
+    clicks.forEach((click) => user.click(screen.getByTestId(click)));
     expect(screen.getByText('Draw')).toBeTruthy();
   });
 });
