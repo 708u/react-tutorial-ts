@@ -99,7 +99,7 @@ const Game: FC = () => {
   const getBoardStatus = () => {
     const r = calcBoardStatus(currentBoard.squares);
     let message = '';
-    if (stepNumber >= 9) {
+    if (stepNumber >= 9 && !r.winner) {
       message = 'Draw';
     } else if (r.winner) {
       message = `Winner: ${r.winner}`;
